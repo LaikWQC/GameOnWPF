@@ -19,7 +19,7 @@ namespace MyGameTest
             base.OnStartup(e);
 
             Time.Start();
-            FpsCalculator.Initialize(0.1);
+            FpsCalculator.Initialize(0.25);
         }
     }
 }

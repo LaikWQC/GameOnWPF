@@ -32,8 +32,6 @@ namespace MyGameTest.Models
             lock (_log)
                 FPS = _log.Count(x => (timeNow - x).TotalSeconds < 1);
         }
-
-        private DateTime _lastUpdate;
         protected override void Update(double deltaTime)
         {
             lock (_log)
