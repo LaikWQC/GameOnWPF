@@ -10,9 +10,6 @@ namespace MyGameTest.ViewModels
 {
     public class LocationViewModel : TimeObject
     {
-        protected override void Start(double deltaTime)
-        {
-        }
         protected override void Update(double deltaTime)
         {
             Test = deltaTime;

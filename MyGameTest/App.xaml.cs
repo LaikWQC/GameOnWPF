@@ -1,4 +1,5 @@
 ﻿using MyGameTest.Models;
+using MyGameTest.Services;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -18,7 +19,10 @@ namespace MyGameTest
         {
             base.OnStartup(e);
 
-            Time.Start();
+            var timeService = new TimeService(new Time());
+            ServiceLocator.Current.InitializeService(timeService);
+
+            timeService.Start();
             FpsCalculator.Initialize(0.25);
         }
     }

@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
+using MyGameTest.Services;
 using System;
 
 namespace MyGameTest.Models
@@ -8,23 +9,25 @@ namespace MyGameTest.Models
         public TimeObject()
         {
             var startTime = DateTime.Now;            
-            _updateAction = (d)=> StartBase(startTime);
-            Time.Instance.OnUpdate += UpdateBase;
+            //_updateAction = (d)=> StartBase(startTime);
+            if (ServiceLocator.Current.TryGetService<TimeService>(out var timeService))
+                //timeService.OnUpdate += UpdateBase;
+                timeService.OnUpdate += Update;
         }
 
-        private Action<double> _updateAction;
+        //private Action<double> _updateAction;
 
-        private void StartBase(DateTime startTime)
-        {
-            Start((DateTime.Now - startTime).TotalSeconds);
-            _updateAction = Update;
-        }
-        private void UpdateBase(double deltaTime)
-        {
-            _updateAction(deltaTime);
-        }
+        //private void StartBase(DateTime startTime)
+        //{
+        //    Start((DateTime.Now - startTime).TotalSeconds);
+        //    _updateAction = Update;
+        //}
+        //private void UpdateBase(double deltaTime)
+        //{
+        //    _updateAction(deltaTime);
+        //}
 
         protected virtual void Update(double deltaTime) { }
-        protected virtual void Start(double deltaTime) { }
+        //protected virtual void Start(double deltaTime) { }
     }
 }

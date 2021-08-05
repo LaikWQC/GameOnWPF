@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyGameTest.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,10 +8,8 @@ using System.Timers;
 
 namespace MyGameTest.Models
 {
-    public class Time
+    public class Time : ITime
     {
-        public static Time Instance { get; } = new Time();
-
         private Timer _timer;
         private int _ticksPerSec = 50;
         private double _baseDeltaTime;
@@ -18,7 +17,7 @@ namespace MyGameTest.Models
         private bool _isUpdating = false;
         private DateTime _lastUpdate;
 
-        private Time()
+        public Time()
         {
             _lastUpdate = DateTime.Now;
             _baseDeltaTime = 1d / _ticksPerSec;
@@ -41,17 +40,14 @@ namespace MyGameTest.Models
             _extraTicks = 0;
             //OnUpdate?.Invoke(deltaTime);
 
-            var time = DateTime.Now;
-            OnUpdate?.Invoke((time-_lastUpdate).TotalSeconds);
-            _lastUpdate = time;
+            OnUpdate?.Invoke((e.SignalTime - _lastUpdate).TotalSeconds);
+            _lastUpdate = e.SignalTime;
 
             _isUpdating = false;
         }
 
         public event Action<double> OnUpdate;
 
-        public static void Start() => Instance._timer.Start();
-
-        public static void Pause() => Instance._timer.Stop();
+        public void Start() => _timer.Start();
     }
 }
