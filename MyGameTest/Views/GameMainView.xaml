@@ -5,10 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MyGameTest.Views"
         xmlns:models="clr-namespace:MyGameTest.Models"    
-        mc:Ignorable="d"
-        Height="450" Width="800">
-  <StackPanel Orientation="Vertical">
-    <TextBlock Text="{Binding Source={x:Static models:FpsCalculator.Instance}, Path=FPS}"/>
-    <TextBlock Text="{Binding Location.Test}"/>
-  </StackPanel>
+        mc:Ignorable="d">
+  <Grid>    
+     
+  </Grid>
 </UserControl>

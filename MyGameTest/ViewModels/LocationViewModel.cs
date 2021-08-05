@@ -12,10 +12,7 @@ namespace MyGameTest.ViewModels
     {
         protected override void Update(double deltaTime)
         {
-            Test = deltaTime;
-            RaisePropertyChanged(() => Test);
+            
         }
-
-        public double Test { get; set; }
     }
 }

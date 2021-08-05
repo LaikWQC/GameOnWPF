@@ -4,9 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:view="clr-namespace:MyGameTest.Views"
+        xmlns:models="clr-namespace:MyGameTest.Models"    
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
   <Grid>
+    <TextBlock Text="{Binding Source={x:Static models:FpsCalculator.Instance}, Path=FPS}"
+               VerticalAlignment="Top" HorizontalAlignment="Right"/>
     <view:GameMainView/>
   </Grid>
 </Window>

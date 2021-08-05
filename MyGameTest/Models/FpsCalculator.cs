@@ -35,9 +35,11 @@ namespace MyGameTest.Models
         protected override void Update(double deltaTime)
         {
             lock (_log)
+            {
                 _log.Add(DateTime.Now);
-            if (_log.Count > 100)
-                _log.RemoveAt(0);
+                if (_log.Count > 100)
+                    _log.RemoveAt(0);
+            }                
         }
 
         public int FPS
