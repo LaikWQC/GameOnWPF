@@ -10,9 +10,8 @@ namespace MyGameTest.Models
         {
             var startTime = DateTime.Now;            
             //_updateAction = (d)=> StartBase(startTime);
-            if (ServiceLocator.Current.TryGetService<TimeService>(out var timeService))
-                //timeService.OnUpdate += UpdateBase;
-                timeService.OnUpdate += Update;
+            ServiceLocator.Current.GetService<TimeService>().OnUpdate += Update;
+            //.OnUpdate += UpdateBase;
         }
 
         //private Action<double> _updateAction;

@@ -71,6 +71,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Models\FpsCalculator.cs" />
+    <Compile Include="Models\Location.cs" />
     <Compile Include="Services\ServiceLocator.cs" />
     <Compile Include="Services\TimeService.cs" />
     <Compile Include="ViewModels\GameViewModel.cs" />

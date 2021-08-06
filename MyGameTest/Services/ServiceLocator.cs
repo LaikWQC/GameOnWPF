@@ -20,15 +20,11 @@ namespace MyGameTest.Services
             _services[type] = service;
         }
 
-        public bool TryGetService<T>(out T result) where T : IService
+        public T GetService<T>() where T : IService
         {
-            if (!_services.TryGetValue(typeof(T), out var service))
-            {
-                result = default;
-                return false;
-            }
-            result = (T)service;
-            return true;
+            if (_services.TryGetValue(typeof(T), out var service))
+                return default;
+            return (T)service;
         }
     }
 
