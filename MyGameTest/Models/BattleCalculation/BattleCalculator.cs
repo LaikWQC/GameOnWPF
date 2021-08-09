@@ -43,9 +43,19 @@ namespace MyGameTest.Models
             foreach (var group in statisticEntries.GroupBy(x => x.Enemy))
                 _enemyStatistics[group.Key] = new EnemyBattleStatistic(group.Key, group);
 
-            //2 этапа рассчетов: сначала внутри каждого героя, потом внутри каждого врага
-            foreach (var statistic in _heroStatistics.Values) statistic.Calculate1stPhase();
-            foreach (var statistic in _enemyStatistics.Values) statistic.Calculate2ndPhase();
+            //рассчет параметров
+            foreach(var entry in statisticEntries)
+            {
+                entry.CalculateHeroSingleDps();
+                entry.CalculateEnemyWantedLevel();
+            }
+            foreach (var statistic in _heroStatistics.Values) statistic.CalculateTotalDps();
+            foreach (var entry in statisticEntries)
+            {
+                entry.CalculateEnemySingleDps();
+                entry.CalculateHeroRiskLevel();
+            }
+            foreach (var statistic in _enemyStatistics.Values) statistic.CalculateTotalDps();
 
             //рассчет входящего урона
             foreach (var statistic in _heroStatistics.Values) statistic.CalculateIncomingDamage();

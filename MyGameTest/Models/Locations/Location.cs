@@ -9,13 +9,20 @@ namespace MyGameTest.Models
     public class Location : TimeObject
     {
         private IReadOnlyList<LocationLevel> _levels;
-        private List<LocationHeroData> _heroes;
+        private List<LocationHeroData> _heroes = new List<LocationHeroData>();
         private BattleCalculator _calculator;
         private bool _needRecalculate;
+        private HeroService _heroService;
 
         public Location(IEnumerable<LocationLevel> levels)
         {
-            _heroes = new List<LocationHeroData>();//TODO получить HeroData из сервиса и заполнить
+            _heroService = ServiceLocator.Current.GetService<HeroService>();
+            foreach(var hero in _heroService.Heroes)
+            {
+                var locHero = new LocationHeroData(hero);
+                locHero.Amount = 20;
+                _heroes.Add(locHero);
+            }
             _levels = levels.ToList().AsReadOnly();
             CurrentLevel = _levels.FirstOrDefault();
         }

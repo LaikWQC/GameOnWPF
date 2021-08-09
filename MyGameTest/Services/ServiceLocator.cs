@@ -22,7 +22,7 @@ namespace MyGameTest.Services
 
         public T GetService<T>() where T : IService
         {
-            if (_services.TryGetValue(typeof(T), out var service))
+            if (!_services.TryGetValue(typeof(T), out var service))
                 return default;
             return (T)service;
         }

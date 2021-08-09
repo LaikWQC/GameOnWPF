@@ -70,6 +70,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Data\DTOs\EnemyDataDto.cs" />
+    <Compile Include="Data\DTOs\HeroDataDto.cs" />
+    <Compile Include="Data\Loader.cs" />
+    <Compile Include="Data\DTOs\UnitDataDto.cs" />
     <Compile Include="Models\BattleCalculation\BattleCalculator.cs" />
     <Compile Include="Models\BattleCalculation\BattleStatisticEntry.cs" />
     <Compile Include="Models\BattleCalculation\EnemyBattleStatistic.cs" />
@@ -81,6 +85,8 @@
     <Compile Include="Models\Time\FpsCalculator.cs" />
     <Compile Include="Models\Locations\Location.cs" />
     <Compile Include="Models\UnitData\UnitData.cs" />
+    <Compile Include="Services\HeroService.cs" />
+    <Compile Include="Services\LocationService.cs" />
     <Compile Include="Services\ServiceLocator.cs" />
     <Compile Include="Services\TimeService.cs" />
     <Compile Include="ViewModels\GameViewModel.cs" />
@@ -134,5 +140,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

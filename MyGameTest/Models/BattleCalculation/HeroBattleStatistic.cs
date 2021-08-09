@@ -11,20 +11,15 @@ namespace MyGameTest.Models
             Entries = entries.ToList();
         }
         
-        public void Calculate1stPhase()
+        public void CalculateTotalDps()
         {
-            foreach(var entry in Entries)
-            {
-                entry.CalculateHeroSingleDps();
-                entry.CalculateEnemySingleDps();
-                entry.CalculateEnemyWantedLevel();
-            }
             var totalWanted = Entries.Sum(x => x.EnemyWantedLevel);
             foreach(var entry in Entries)
             {
                 entry.HeroPreference = entry.EnemyWantedLevel / totalWanted;
                 entry.CalculateHeroTotalDps();
             }
+            TotalDps = Entries.Sum(x => x.HeroTotalDps);
         }
 
         public void CalculateIncomingDamage()
@@ -34,5 +29,6 @@ namespace MyGameTest.Models
 
         public LocationHeroData Hero { get; }
         public List<BattleStatisticEntry> Entries { get; }
+        public double TotalDps { get; private set; }
     }
 }

@@ -11,7 +11,7 @@ namespace MyGameTest.Models
             Entries = entries.ToList();
         }
 
-        public void Calculate2ndPhase()
+        public void CalculateTotalDps()
         {
             var totalRisk = Entries.Sum(x => x.HeroRiskLevel);
             foreach (var entry in Entries)
@@ -19,6 +19,7 @@ namespace MyGameTest.Models
                 entry.EnemyPreference = entry.HeroRiskLevel / totalRisk;
                 entry.CalculateEnemyTotalDps();
             }
+            TotalDps = Entries.Sum(x => x.EnemyTotalDps);
         }
 
         public void CalculateIncomingDamage()
@@ -28,5 +29,6 @@ namespace MyGameTest.Models
 
         public EnemyData Enemy { get; }
         public List<BattleStatisticEntry> Entries { get; }
+        public double TotalDps { get; private set; }
     }
 }

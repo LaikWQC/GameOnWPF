@@ -5,12 +5,14 @@
         public LocationHeroData(HeroData data)
         {
             Data = data;
+
             CurrentHP = Data.HP;
+            IncomingDamagePerSec = 0;
         }
 
         public HeroData Data { get; }
         public int Amount { get; set; }
         public double CurrentHP { get; set; }
-        public double IncomingDamagePerSec { get; set; } = 0;
+        public double IncomingDamagePerSec { get; set; } 
     }
 }

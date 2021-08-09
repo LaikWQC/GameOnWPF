@@ -1,4 +1,5 @@
-﻿using MyGameTest.Models;
+﻿using MyGameTest.Data;
+using MyGameTest.Models;
 using MyGameTest.Services;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,10 @@ namespace MyGameTest
 
             var timeService = new TimeService(new Time());
             ServiceLocator.Current.InitializeService(timeService);
+            ServiceLocator.Current.InitializeService(new LocationService());
+            ServiceLocator.Current.InitializeService(new HeroService());
+
+            Loader.Load();
 
             timeService.Start();
             FpsCalculator.Initialize(0.25);
