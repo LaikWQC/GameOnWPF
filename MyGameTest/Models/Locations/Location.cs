@@ -17,12 +17,11 @@ namespace MyGameTest.Models
         public Location(IEnumerable<LocationLevel> levels)
         {
             _heroService = ServiceLocator.Current.GetService<HeroService>();
+
             foreach(var hero in _heroService.Heroes)
-            {
-                var locHero = new LocationHeroData(hero);
-                locHero.Amount = 20;
-                _heroes.Add(locHero);
-            }
+                _heroes.Add(new LocationHeroData(hero));
+            _heroes.ForEach(x => x.AmountChanged += () => _needRecalculate = true);
+
             _levels = levels.ToList().AsReadOnly();
             CurrentLevel = _levels.FirstOrDefault();
         }
@@ -37,7 +36,7 @@ namespace MyGameTest.Models
                 if (_currentLevel == value) return;
                 _currentLevel = value;
                 if (_currentLevel == null) return;
-                _calculator = new BattleCalculator(_heroes, _currentLevel.Enemies);
+                _calculator = new BattleCalculator(_heroes, Enemies);
                 _needRecalculate = true;
             }
         }
@@ -50,7 +49,10 @@ namespace MyGameTest.Models
                 _calculator.Calculate();
                 _needRecalculate = false;
             }
-            //TODO снижать HP и убивать юнитов
+            _heroes.ForEach(x => x.TakeDamage(deltaTime));
         }
+
+        public IReadOnlyCollection<LocationHeroData> Heroes => _heroes.AsReadOnly();
+        public IReadOnlyCollection<EnemyData> Enemies => _currentLevel?.Enemies;
     }
 }

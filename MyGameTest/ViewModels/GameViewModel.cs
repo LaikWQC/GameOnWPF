@@ -8,6 +8,6 @@ namespace MyGameTest.ViewModels
 {
     public class GameViewModel
     {
-        public LocationViewModel Location { get; } = new LocationViewModel();
+        public BattleSectionViewModel BattleSectionVM { get; } = new BattleSectionViewModel();
     }
 }

@@ -17,7 +17,7 @@ namespace MyGameTest.Data
                 new HeroData(new HeroDataDto
                 {
                     Name = "Knight",
-                    HP = 50,
+                    HP = 500,
                     Armor = 3,
                     Damage = 10,
                     AttackDelay = 1.5,
@@ -26,7 +26,7 @@ namespace MyGameTest.Data
                 new HeroData(new HeroDataDto
                 {
                     Name = "Archer",
-                    HP = 40,
+                    HP = 400,
                     Armor = 1,
                     Damage = 15,
                     AttackDelay = 1.4,
@@ -44,7 +44,7 @@ namespace MyGameTest.Data
                         new EnemyData(new EnemyDataDto
                         {
                             Name = "Wolf",
-                            HP = 50,
+                            HP = 250,
                             Armor = 0,
                             Damage = 8,
                             AttackDelay = 1,
@@ -54,7 +54,7 @@ namespace MyGameTest.Data
                         new EnemyData(new EnemyDataDto
                         {
                             Name = "Skeleton",
-                            HP = 70,
+                            HP = 350,
                             Armor = 5,
                             Damage = 10,
                             AttackDelay = 1.5,

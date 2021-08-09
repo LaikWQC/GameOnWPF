@@ -6,7 +6,16 @@
         xmlns:local="clr-namespace:MyGameTest.Views"
         xmlns:models="clr-namespace:MyGameTest.Models"    
         mc:Ignorable="d">
-  <Grid>    
-     
-  </Grid>
+    <TabControl>
+        <TabItem Header="Battle" DataContext="{Binding BattleSectionVM}">
+            <Grid DataContext="{Binding CurrentLocation}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <local:UnitView Grid.Column="0" DataContext="{Binding Heroes}"/>
+                <local:UnitView Grid.Column="1" DataContext="{Binding Enemies}"/>
+            </Grid>
+        </TabItem>
+    </TabControl>
 </UserControl>

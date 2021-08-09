@@ -89,10 +89,16 @@
     <Compile Include="Services\LocationService.cs" />
     <Compile Include="Services\ServiceLocator.cs" />
     <Compile Include="Services\TimeService.cs" />
+    <Compile Include="ViewModels\BattleSectionViewModel.cs" />
     <Compile Include="ViewModels\GameViewModel.cs" />
+    <Compile Include="ViewModels\HeroViewModel.cs" />
+    <Compile Include="ViewModels\IUnit.cs" />
     <Compile Include="ViewModels\LocationViewModel.cs" />
     <Compile Include="Views\GameMainView.xaml.cs">
       <DependentUpon>GameMainView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UnitView.xaml.cs">
+      <DependentUpon>UnitView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -107,6 +113,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\GameMainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UnitView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
