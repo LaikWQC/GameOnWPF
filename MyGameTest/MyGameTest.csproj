@@ -70,8 +70,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Models\FpsCalculator.cs" />
-    <Compile Include="Models\Location.cs" />
+    <Compile Include="Models\BattleCalculation\BattleCalculator.cs" />
+    <Compile Include="Models\BattleCalculation\BattleStatisticEntry.cs" />
+    <Compile Include="Models\BattleCalculation\EnemyBattleStatistic.cs" />
+    <Compile Include="Models\BattleCalculation\HeroBattleStatistic.cs" />
+    <Compile Include="Models\Locations\LocationHeroData.cs" />
+    <Compile Include="Models\Locations\LocationLevel.cs" />
+    <Compile Include="Models\UnitData\EnemyData.cs" />
+    <Compile Include="Models\UnitData\HeroData.cs" />
+    <Compile Include="Models\Time\FpsCalculator.cs" />
+    <Compile Include="Models\Locations\Location.cs" />
+    <Compile Include="Models\UnitData\UnitData.cs" />
     <Compile Include="Services\ServiceLocator.cs" />
     <Compile Include="Services\TimeService.cs" />
     <Compile Include="ViewModels\GameViewModel.cs" />
@@ -97,8 +106,8 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Time.cs" />
-    <Compile Include="Models\TimeObject.cs" />
+    <Compile Include="Models\Time\Time.cs" />
+    <Compile Include="Models\Time\TimeObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
