@@ -17,11 +17,11 @@ namespace MyGameTest.ViewModels
         {
             _model = model;
 
-            Heroes = new ObservableCollection<IUnit>(_model.Heroes.Select(x => new HeroViewModel(x)));
+            Heroes = new ObservableCollection<HeroViewModel>(_model.Heroes.Select(x => new HeroViewModel(x)));
             Enemies = new ObservableCollection<EnemyData>(_model.Enemies);
         }
 
-        public ObservableCollection<IUnit> Heroes { get; }
+        public ObservableCollection<HeroViewModel> Heroes { get; }
         public ObservableCollection<EnemyData> Enemies { get; }
     }
 }

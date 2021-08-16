@@ -78,7 +78,7 @@
     <Compile Include="Models\BattleCalculation\BattleStatisticEntry.cs" />
     <Compile Include="Models\BattleCalculation\EnemyBattleStatistic.cs" />
     <Compile Include="Models\BattleCalculation\HeroBattleStatistic.cs" />
-    <Compile Include="Models\Locations\LocationHeroData.cs" />
+    <Compile Include="Models\UnitData\LocationHeroData.cs" />
     <Compile Include="Models\Locations\LocationLevel.cs" />
     <Compile Include="Models\UnitData\EnemyData.cs" />
     <Compile Include="Models\UnitData\HeroData.cs" />
@@ -92,7 +92,6 @@
     <Compile Include="ViewModels\BattleSectionViewModel.cs" />
     <Compile Include="ViewModels\GameViewModel.cs" />
     <Compile Include="ViewModels\HeroViewModel.cs" />
-    <Compile Include="ViewModels\IUnit.cs" />
     <Compile Include="ViewModels\LocationViewModel.cs" />
     <Compile Include="Views\GameMainView.xaml.cs">
       <DependentUpon>GameMainView.xaml</DependentUpon>

@@ -24,11 +24,13 @@ namespace MyGameTest.Models
 
         public void CalculateIncomingDamage()
         {
-            Enemy.IncomingDamagePerSec = Entries.Sum(x => x.HeroTotalDps);
+            TotalIncomingDamage = Entries.Sum(x => x.HeroTotalDps);
+            Enemy.SetIncomingDamage(TotalIncomingDamage);
         }
 
         public EnemyData Enemy { get; }
         public List<BattleStatisticEntry> Entries { get; }
         public double TotalDps { get; private set; }
+        public double TotalIncomingDamage { get; private set; }
     }
 }

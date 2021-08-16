@@ -15,8 +15,8 @@
                 <DataGridTemplateColumn.CellTemplate>
                     <DataTemplate>
                         <Grid>
-                            <ProgressBar Value="{Binding HpPercentage, Mode=OneWay}" Minimum="0" Maximum="1"/>
-                            <TextBlock Text="{Binding IncomingDamagePerSec}" HorizontalAlignment="Center"/>
+                            <ProgressBar Value="{Binding CurrentHpPercentage, Mode=OneWay}" Minimum="0" Maximum="1"/>
+                            <TextBlock Text="{Binding DiedInSecond}" HorizontalAlignment="Center"/>
                         </Grid>                        
                     </DataTemplate>
                 </DataGridTemplateColumn.CellTemplate>

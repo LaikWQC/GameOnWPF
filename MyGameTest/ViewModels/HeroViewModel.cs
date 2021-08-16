@@ -4,7 +4,7 @@ using System;
 
 namespace MyGameTest.ViewModels
 {
-    public class HeroViewModel : ViewModelBase, IUnit, IDisposable
+    public class HeroViewModel : ViewModelBase, IDisposable
     {
         private readonly LocationHeroData _model;
 
@@ -13,16 +13,14 @@ namespace MyGameTest.ViewModels
             _model = model;
             _model.AmountChanged += OnAmountChanged;
             _model.CurrentHPChanged += OnHpChanged;
-            _model.Data.DataChanged += OnHpChanged;
-            _model.IncomingDamageChanged += OnDamageChanged;
+            _model.DiedInSecondChanged += OnDiedInSecondChanged;
         }
 
         public void Dispose()
         {
             _model.AmountChanged -= OnAmountChanged;
             _model.CurrentHPChanged -= OnHpChanged;
-            _model.Data.DataChanged -= OnHpChanged;
-            _model.IncomingDamageChanged -= OnDamageChanged;
+            _model.DiedInSecondChanged -= OnDiedInSecondChanged;
         }
 
         #region events
@@ -32,11 +30,11 @@ namespace MyGameTest.ViewModels
         }
         private void OnHpChanged()
         {
-            RaisePropertyChanged(() => HpPercentage);
+            RaisePropertyChanged(() => CurrentHpPercentage);
         }
-        private void OnDamageChanged()
+        private void OnDiedInSecondChanged()
         {
-            RaisePropertyChanged(() => IncomingDamagePerSec);
+            RaisePropertyChanged(() => DiedInSecond);
         }
         #endregion
 
@@ -46,7 +44,7 @@ namespace MyGameTest.ViewModels
             get => _model.Amount;
             set => _model.Amount = value;
         }
-        public double HpPercentage => _model.CurrentHP / _model.Data.HP;
-        public string IncomingDamagePerSec => (-_model.IncomingDamagePerSec).ToString("0.##");
+        public double CurrentHpPercentage => _model.CurrentHpPercentage;
+        public string DiedInSecond => (-_model.DiedInSecond).ToString("0.##");
     }
 }

@@ -21,10 +21,11 @@ namespace MyGameTest.Models
             _heroStatistics.Clear();
             _enemyStatistics.Clear();
 
-            //если героев нет, то врагов никто не бьет и рассчитывать нечего
+            //если героев нет, то и рассчитывать нечего
             if (_heroes.All(x => x.Amount == 0))
             {
-                _enemies.ForEach(x => x.IncomingDamagePerSec = 0);
+                _heroes.ForEach(x => x.SetIncomingDamage(0));
+                _enemies.ForEach(x => x.SetIncomingDamage(0));
                 return;
             }
 
@@ -36,7 +37,7 @@ namespace MyGameTest.Models
                     foreach (var enemy in _enemies)
                         statisticEntries.Add(new BattleStatisticEntry(hero, enemy));
                 else
-                    hero.IncomingDamagePerSec = 0;
+                    hero.SetIncomingDamage(0);
             }
             foreach (var group in statisticEntries.GroupBy(x => x.Hero))
                 _heroStatistics[group.Key] = new HeroBattleStatistic(group.Key, group);

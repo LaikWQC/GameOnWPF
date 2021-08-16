@@ -12,15 +12,15 @@ namespace MyGameTest.Models
         private List<LocationHeroData> _heroes = new List<LocationHeroData>();
         private BattleCalculator _calculator;
         private bool _needRecalculate;
-        private HeroService _heroService;
 
         public Location(IEnumerable<LocationLevel> levels)
         {
-            _heroService = ServiceLocator.Current.GetService<HeroService>();
+            var heroService = ServiceLocator.Current.GetService<HeroService>();
 
-            foreach(var hero in _heroService.Heroes)
+            foreach(var hero in heroService.Heroes)
                 _heroes.Add(new LocationHeroData(hero));
             _heroes.ForEach(x => x.AmountChanged += () => _needRecalculate = true);
+            _heroes.ForEach(x => x.Data.DataChanged += () => _needRecalculate = true);
 
             _levels = levels.ToList().AsReadOnly();
             CurrentLevel = _levels.FirstOrDefault();
@@ -36,11 +36,16 @@ namespace MyGameTest.Models
                 if (_currentLevel == value) return;
                 _currentLevel = value;
                 if (_currentLevel == null) return;
-                _calculator = new BattleCalculator(_heroes, Enemies);
-                _needRecalculate = true;
+                CreateCalculator();
             }
         }
         private LocationLevel _currentLevel;
+
+        private void CreateCalculator()
+        {
+            _calculator = new BattleCalculator(_heroes, Enemies);
+            _needRecalculate = true;
+        }
 
         protected override void Update(double deltaTime)
         {
@@ -49,7 +54,9 @@ namespace MyGameTest.Models
                 _calculator.Calculate();
                 _needRecalculate = false;
             }
+
             _heroes.ForEach(x => x.TakeDamage(deltaTime));
+            //foreach (var enemy in Enemies) enemy.TakeDamage(deltaTime);
         }
 
         public IReadOnlyCollection<LocationHeroData> Heroes => _heroes.AsReadOnly();

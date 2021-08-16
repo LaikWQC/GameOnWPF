@@ -9,13 +9,18 @@ namespace MyGameTest.Models
             Amount = dto.Amount;
             WantedLevel = dto.WantedLevel;
 
-            CurrentHP = HP;
-            IncomingDamagePerSec = 0;
+            CurrentHpPercentage = 1;
+            DiedInSecond = 0;
+        }
+
+        public void SetIncomingDamage(double damage)
+        {
+            DiedInSecond = damage / HP;
         }
 
         public int Amount { get; }
         public double WantedLevel { get; }
-        public double CurrentHP { get; set; }
-        public double IncomingDamagePerSec { get; set; }
+        public double CurrentHpPercentage { get; private set; }
+        public double DiedInSecond { get; private set; }
     }
 }
