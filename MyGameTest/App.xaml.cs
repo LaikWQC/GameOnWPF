@@ -1,12 +1,7 @@
 ﻿using MyGameTest.Data;
 using MyGameTest.Models;
 using MyGameTest.Services;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+using MyGameTest.ViewModels;
 using System.Windows;
 
 namespace MyGameTest
@@ -28,7 +23,7 @@ namespace MyGameTest
             Loader.Load();
 
             timeService.Start();
-            FpsCalculator.Initialize(0.25);
+            FpsCalculatorViewModel.Initialize(0.25);
         }
     }
 }

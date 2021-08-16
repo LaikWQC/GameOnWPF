@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E9B220B2-6044-4134-9273-3A7B7D430166}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MyGameTest</RootNamespace>
+    <AssemblyName>MyGameTest.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Data\DTOs\EnemyDataDto.cs" />
+    <Compile Include="Data\DTOs\HeroDataDto.cs" />
+    <Compile Include="Data\DTOs\UnitDataDto.cs" />
+    <Compile Include="Data\Loader.cs" />
+    <Compile Include="Models\BattleCalculation\BattleCalculator.cs" />
+    <Compile Include="Models\BattleCalculation\BattleStatisticEntry.cs" />
+    <Compile Include="Models\BattleCalculation\EnemyBattleStatistic.cs" />
+    <Compile Include="Models\BattleCalculation\HeroBattleStatistic.cs" />
+    <Compile Include="Models\Locations\Location.cs" />
+    <Compile Include="Models\Locations\LocationLevel.cs" />
+    <Compile Include="Models\Time\FpsCalculator.cs" />
+    <Compile Include="Models\Time\Time.cs" />
+    <Compile Include="Models\Time\TimeObject.cs" />
+    <Compile Include="Models\UnitData\EnemyData.cs" />
+    <Compile Include="Models\UnitData\HeroData.cs" />
+    <Compile Include="Models\UnitData\LocationHeroData.cs" />
+    <Compile Include="Models\UnitData\UnitData.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\HeroService.cs" />
+    <Compile Include="Services\LocationService.cs" />
+    <Compile Include="Services\ServiceLocator.cs" />
+    <Compile Include="Services\TimeService.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

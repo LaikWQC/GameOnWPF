@@ -1,10 +1,9 @@
-﻿using GalaSoft.MvvmLight;
-using MyGameTest.Services;
+﻿using MyGameTest.Services;
 using System;
 
 namespace MyGameTest.Models
 {
-    public abstract class TimeObject : ViewModelBase
+    public abstract class TimeObject
     {
         public TimeObject()
         {

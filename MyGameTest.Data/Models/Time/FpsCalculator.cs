@@ -45,8 +45,15 @@ namespace MyGameTest.Models
         public int FPS
         {
             get => _fps;
-            set => Set(() => FPS, ref _fps, value);
+            set
+            {
+                if (_fps == value) return;
+                _fps = value;
+                FpsChanged?.Invoke();
+            }
         }
         private int _fps;
+
+        public event Action FpsChanged;
     }
 }

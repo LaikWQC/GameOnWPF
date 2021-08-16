@@ -7,7 +7,7 @@
     <ProjectGuid>{C6331DA9-C2DD-4ACB-B936-2E84741DF04D}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>MyGameTest</RootNamespace>
-    <AssemblyName>MyGameTest</AssemblyName>
+    <AssemblyName>MyGameTest.WPF</AssemblyName>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -61,26 +61,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Data\DTOs\EnemyDataDto.cs" />
-    <Compile Include="Data\DTOs\HeroDataDto.cs" />
-    <Compile Include="Data\Loader.cs" />
-    <Compile Include="Data\DTOs\UnitDataDto.cs" />
-    <Compile Include="Models\BattleCalculation\BattleCalculator.cs" />
-    <Compile Include="Models\BattleCalculation\BattleStatisticEntry.cs" />
-    <Compile Include="Models\BattleCalculation\EnemyBattleStatistic.cs" />
-    <Compile Include="Models\BattleCalculation\HeroBattleStatistic.cs" />
-    <Compile Include="Models\UnitData\LocationHeroData.cs" />
-    <Compile Include="Models\Locations\LocationLevel.cs" />
-    <Compile Include="Models\UnitData\EnemyData.cs" />
-    <Compile Include="Models\UnitData\HeroData.cs" />
-    <Compile Include="Models\Time\FpsCalculator.cs" />
-    <Compile Include="Models\Locations\Location.cs" />
-    <Compile Include="Models\UnitData\UnitData.cs" />
-    <Compile Include="Services\HeroService.cs" />
-    <Compile Include="Services\LocationService.cs" />
-    <Compile Include="Services\ServiceLocator.cs" />
-    <Compile Include="Services\TimeService.cs" />
     <Compile Include="ViewModels\BattleSectionViewModel.cs" />
+    <Compile Include="ViewModels\FpsCalculatorViewModel.cs" />
     <Compile Include="ViewModels\GameViewModel.cs" />
     <Compile Include="ViewModels\HeroViewModel.cs" />
     <Compile Include="ViewModels\LocationViewModel.cs" />
@@ -112,8 +94,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Time\Time.cs" />
-    <Compile Include="Models\Time\TimeObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -140,6 +120,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\MyGameTest.Data\MyGameTest.Data.csproj">
+      <Project>{e9b220b2-6044-4134-9273-3a7b7d430166}</Project>
+      <Name>MyGameTest.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
