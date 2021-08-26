@@ -18,10 +18,10 @@ namespace MyGameTest.ViewModels
             _model = model;
 
             Heroes = new ObservableCollection<HeroViewModel>(_model.Heroes.Select(x => new HeroViewModel(x)));
-            Enemies = new ObservableCollection<EnemyData>(_model.Enemies);
+            Enemies = new ObservableCollection<EnemyViewModel>(_model.Enemies.Select(x=> new EnemyViewModel(x)));
         }
 
         public ObservableCollection<HeroViewModel> Heroes { get; }
-        public ObservableCollection<EnemyData> Enemies { get; }
+        public ObservableCollection<EnemyViewModel> Enemies { get; }
     }
 }

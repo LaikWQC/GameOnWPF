@@ -64,13 +64,17 @@
     <Compile Include="ViewModels\BattleSectionViewModel.cs" />
     <Compile Include="ViewModels\FpsCalculatorViewModel.cs" />
     <Compile Include="ViewModels\GameViewModel.cs" />
+    <Compile Include="ViewModels\EnemyViewModel.cs" />
     <Compile Include="ViewModels\HeroViewModel.cs" />
     <Compile Include="ViewModels\LocationViewModel.cs" />
+    <Compile Include="Views\EnemiesBattleTableView.xaml.cs">
+      <DependentUpon>EnemiesBattleTableView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\GameMainView.xaml.cs">
       <DependentUpon>GameMainView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\UnitView.xaml.cs">
-      <DependentUpon>UnitView.xaml</DependentUpon>
+    <Compile Include="Views\HeroesBattleTableView.xaml.cs">
+      <DependentUpon>HeroesBattleTableView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -84,11 +88,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\EnemiesBattleTableView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\GameMainView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\UnitView.xaml">
+    <Page Include="Views\HeroesBattleTableView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

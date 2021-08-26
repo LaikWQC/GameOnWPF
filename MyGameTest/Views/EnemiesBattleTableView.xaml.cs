@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace MyGameTest.Views
 {
     /// <summary>
-    /// Логика взаимодействия для UnitView.xaml
+    /// Логика взаимодействия для EnemiesBattleTableView.xaml
     /// </summary>
-    public partial class UnitView : UserControl
+    public partial class EnemiesBattleTableView : UserControl
     {
-        public UnitView()
+        public EnemiesBattleTableView()
         {
             InitializeComponent();
         }

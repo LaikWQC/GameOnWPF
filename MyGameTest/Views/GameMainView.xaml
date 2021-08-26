@@ -13,8 +13,8 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <local:UnitView Grid.Column="0" DataContext="{Binding Heroes}"/>
-                <local:UnitView Grid.Column="1" DataContext="{Binding Enemies}"/>
+                <local:HeroesBattleTableView Grid.Column="0" DataContext="{Binding Heroes}"/>
+                <local:EnemiesBattleTableView Grid.Column="1" DataContext="{Binding Enemies}"/>
             </Grid>
         </TabItem>
     </TabControl>

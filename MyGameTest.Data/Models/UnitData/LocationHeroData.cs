@@ -48,8 +48,9 @@ namespace MyGameTest.Models
             get => _amount;
             set
             {
-                if (_amount == value) return;
-                _amount = value;
+                var val = Math.Max(0, value);
+                if (_amount == val) return;
+                _amount = val;
                 AmountChanged?.Invoke();
             }
         }
@@ -58,7 +59,7 @@ namespace MyGameTest.Models
         public double CurrentHpPercentage
         {
             get => _currentHpPercentage;
-            set
+            private set
             {
                 if (_currentHpPercentage == value) return;
                 _currentHpPercentage = value;

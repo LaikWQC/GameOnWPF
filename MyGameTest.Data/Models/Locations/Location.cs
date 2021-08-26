@@ -56,7 +56,7 @@ namespace MyGameTest.Models
             }
 
             _heroes.ForEach(x => x.TakeDamage(deltaTime));
-            //foreach (var enemy in Enemies) enemy.TakeDamage(deltaTime);
+            foreach (var enemy in Enemies) enemy.TakeDamage(deltaTime);
         }
 
         public IReadOnlyCollection<LocationHeroData> Heroes => _heroes.AsReadOnly();
