@@ -67,6 +67,9 @@
     <Compile Include="ViewModels\EnemyViewModel.cs" />
     <Compile Include="ViewModels\HeroViewModel.cs" />
     <Compile Include="ViewModels\LocationViewModel.cs" />
+    <Compile Include="Views\BattleSectionView.xaml.cs">
+      <DependentUpon>BattleSectionView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\EnemiesBattleTableView.xaml.cs">
       <DependentUpon>EnemiesBattleTableView.xaml</DependentUpon>
     </Compile>
@@ -88,6 +91,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\BattleSectionView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\EnemiesBattleTableView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

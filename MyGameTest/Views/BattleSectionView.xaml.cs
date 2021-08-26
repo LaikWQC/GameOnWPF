@@ -16,18 +16,22 @@ using System.Windows.Shapes;
 namespace MyGameTest.Views
 {
     /// <summary>
-    /// Логика взаимодействия для EnemiesBattleTableView.xaml
+    /// Логика взаимодействия для BattleSectionView.xaml
     /// </summary>
-    public partial class EnemiesBattleTableView : UserControl
+    public partial class BattleSectionView : UserControl
     {
-        public EnemiesBattleTableView()
+        public BattleSectionView()
         {
             InitializeComponent();
         }
 
-        public void Unselect()
+        private void OnKeyDown(object sender, KeyEventArgs e)
         {
-            Table.SelectedItem = null;
+            if (e.Key == Key.Escape)
+            {
+                EnemiesTable.Unselect();
+                HeroesTable.Unselect();
+            }
         }
     }
 }

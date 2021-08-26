@@ -7,15 +7,9 @@
         mc:Ignorable="d" 
         d:DesignHeight="450" d:DesignWidth="800">
     <TabControl>
-        <TabItem Header="Battle" DataContext="{Binding BattleSectionVM}">
-            <Grid DataContext="{Binding CurrentLocation}">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-                <local:HeroesBattleTableView Grid.Column="0" DataContext="{Binding Heroes}"/>
-                <local:EnemiesBattleTableView Grid.Column="1" DataContext="{Binding Enemies}"/>
-            </Grid>
+        <TabItem Header="Battle">
+            <local:BattleSectionView DataContext="{Binding BattleSectionVM}"/>
         </TabItem>
+        <TabItem Header="Buildings"/>
     </TabControl>
 </UserControl>

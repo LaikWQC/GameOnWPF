@@ -24,6 +24,6 @@ namespace MyGameTest.Views
         {
             InitializeComponent();
             DataContext = new GameViewModel();
-        }
+        }        
     }
 }

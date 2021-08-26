@@ -24,5 +24,10 @@ namespace MyGameTest.Views
         {
             InitializeComponent();
         }
+
+        public void Unselect()
+        {
+            Table.SelectedItem = null;
+        }
     }
 }

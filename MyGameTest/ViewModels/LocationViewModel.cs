@@ -17,11 +17,35 @@ namespace MyGameTest.ViewModels
         {
             _model = model;
 
-            Heroes = new ObservableCollection<HeroViewModel>(_model.Heroes.Select(x => new HeroViewModel(x)));
-            Enemies = new ObservableCollection<EnemyViewModel>(_model.Enemies.Select(x=> new EnemyViewModel(x)));
+            Heroes = new List<HeroViewModel>(_model.Heroes.Select(x => new HeroViewModel(x)));
+            Enemies = new List<EnemyViewModel>(_model.Enemies.Select(x=> new EnemyViewModel(x)));
         }
 
-        public ObservableCollection<HeroViewModel> Heroes { get; }
-        public ObservableCollection<EnemyViewModel> Enemies { get; }
+        public List<HeroViewModel> Heroes { get; }
+        public List<EnemyViewModel> Enemies { get; }
+
+        public HeroViewModel SelectedHero
+        {
+            get => _selectedHero;
+            set
+            {
+                if (!Set(() => SelectedHero, ref _selectedHero, value)) return;
+                if (value != null) 
+                    Set(() => SelectedEnemy, ref _selectedEnemy, null);
+            }
+        }
+        private HeroViewModel _selectedHero;
+
+        public EnemyViewModel SelectedEnemy
+        {
+            get => _selectedEnemy;
+            set
+            {
+                if (!Set(() => SelectedEnemy, ref _selectedEnemy, value)) return;
+                if (value != null)
+                    Set(() => SelectedHero, ref _selectedHero, null);
+            }
+        }
+        private EnemyViewModel _selectedEnemy;
     }
 }
