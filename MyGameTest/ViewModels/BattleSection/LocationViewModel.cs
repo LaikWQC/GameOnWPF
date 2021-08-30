@@ -17,12 +17,12 @@ namespace MyGameTest.ViewModels
         {
             _model = model;
 
-            Heroes = new List<HeroViewModel>(_model.Heroes.Select(x => new HeroViewModel(x)));
-            Enemies = new List<EnemyViewModel>(_model.Enemies.Select(x=> new EnemyViewModel(x)));
+            Heroes = new ObservableCollection<HeroViewModel>(_model.Heroes.Select(x => new HeroViewModel(x)));
+            Enemies = new ObservableCollection<EnemyViewModel>(_model.Enemies.Select(x=> new EnemyViewModel(x)));
         }
 
-        public List<HeroViewModel> Heroes { get; }
-        public List<EnemyViewModel> Enemies { get; }
+        public ObservableCollection<HeroViewModel> Heroes { get; }
+        public ObservableCollection<EnemyViewModel> Enemies { get; }
 
         public HeroViewModel SelectedHero
         {
@@ -30,8 +30,12 @@ namespace MyGameTest.ViewModels
             set
             {
                 if (!Set(() => SelectedHero, ref _selectedHero, value)) return;
-                if (value != null) 
+                if (value != null)
+                {
                     Set(() => SelectedEnemy, ref _selectedEnemy, null);
+                    UnitStatistic = new HeroStatisticViewModel(value, _model);
+                }
+                else UnitStatistic = null;
             }
         }
         private HeroViewModel _selectedHero;
@@ -43,9 +47,25 @@ namespace MyGameTest.ViewModels
             {
                 if (!Set(() => SelectedEnemy, ref _selectedEnemy, value)) return;
                 if (value != null)
+                {
                     Set(() => SelectedHero, ref _selectedHero, null);
+                }
+                else UnitStatistic = null;
             }
         }
         private EnemyViewModel _selectedEnemy;
+
+        public UnitStatisticViewModel UnitStatistic 
+        {
+            get => _unitStatistic;
+            set
+            {
+                if (_unitStatistic == value) return;
+                _unitStatistic?.Dispose();
+                _unitStatistic = value;
+                RaisePropertyChanged(() => UnitStatistic);
+            }
+        }
+        private UnitStatisticViewModel _unitStatistic;
     }
 }

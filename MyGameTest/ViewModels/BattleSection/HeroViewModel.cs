@@ -8,14 +8,14 @@ namespace MyGameTest.ViewModels
 {
     public class HeroViewModel : ViewModelBase, IDisposable
     {
-        private readonly LocationHeroData _model;
+        public LocationHeroData Model { get; }
 
         public HeroViewModel(LocationHeroData model)
         {
-            _model = model;
-            _model.AmountChanged += OnAmountChanged;
-            _model.CurrentHPChanged += OnHpChanged;
-            _model.DiedInSecondChanged += OnDiedInSecondChanged;
+            Model = model;
+            Model.AmountChanged += OnAmountChanged;
+            Model.CurrentHPChanged += OnHpChanged;
+            Model.DiedInSecondChanged += OnDiedInSecondChanged;
 
             CmdPlusAmount = new RelayCommand(PlusAmount);
             CmdMinusAmount = new RelayCommand(MinusAmount);
@@ -23,9 +23,9 @@ namespace MyGameTest.ViewModels
 
         public void Dispose()
         {
-            _model.AmountChanged -= OnAmountChanged;
-            _model.CurrentHPChanged -= OnHpChanged;
-            _model.DiedInSecondChanged -= OnDiedInSecondChanged;
+            Model.AmountChanged -= OnAmountChanged;
+            Model.CurrentHPChanged -= OnHpChanged;
+            Model.DiedInSecondChanged -= OnDiedInSecondChanged;
         }
 
         #region events
@@ -43,18 +43,18 @@ namespace MyGameTest.ViewModels
         }
         #endregion
 
-        public string Name => _model.Data.Name;
-        public int Amount => _model.Amount;
-        public double CurrentHpPercentage => _model.CurrentHpPercentage;
-        public string DiedInSecond => (-_model.DiedInSecond).ToString("0.##");
+        public string Name => Model.Data.Name;
+        public int Amount => Model.Amount;
+        public double CurrentHpPercentage => Model.CurrentHpPercentage;
+        public string DiedInSecond => (-Model.DiedInSecond).ToString("0.##");
 
         public void PlusAmount()
         {
-            _model.Amount++;
+            Model.Amount++;
         }
         public void MinusAmount()
         {
-            _model.Amount--;
+            Model.Amount--;
         }
 
         public ICommand CmdPlusAmount { get; }

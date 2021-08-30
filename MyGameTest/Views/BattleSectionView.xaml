@@ -11,7 +11,12 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <local:HeroesBattleTableView x:Name="HeroesTable" Grid.Column="0"/>
-        <local:EnemiesBattleTableView x:Name="EnemiesTable" Grid.Column="1"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <local:HeroesBattleTableView x:Name="HeroesTable" Grid.Column="0" Grid.Row="0"/>
+        <local:EnemiesBattleTableView x:Name="EnemiesTable" Grid.Column="1" Grid.Row="0"/>
+        <local:UnitStatisticView Grid.ColumnSpan="2" Grid.Row="1" DataContext="{Binding UnitStatistic}"/>
     </Grid>
 </UserControl>

@@ -61,12 +61,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ViewModels\BattleSectionViewModel.cs" />
+    <Compile Include="ViewModels\BattleSection\BattleSectionViewModel.cs" />
     <Compile Include="ViewModels\FpsCalculatorViewModel.cs" />
     <Compile Include="ViewModels\GameViewModel.cs" />
-    <Compile Include="ViewModels\EnemyViewModel.cs" />
-    <Compile Include="ViewModels\HeroViewModel.cs" />
-    <Compile Include="ViewModels\LocationViewModel.cs" />
+    <Compile Include="ViewModels\BattleSection\EnemyViewModel.cs" />
+    <Compile Include="ViewModels\BattleSection\Statistic\Entry\HeroStatisticEntryViewModel.cs" />
+    <Compile Include="ViewModels\BattleSection\Statistic\HeroStatisticViewModel.cs" />
+    <Compile Include="ViewModels\BattleSection\HeroViewModel.cs" />
+    <Compile Include="ViewModels\BattleSection\LocationViewModel.cs" />
+    <Compile Include="ViewModels\BattleSection\Statistic\Entry\StatisticEntryViewModel.cs" />
+    <Compile Include="ViewModels\BattleSection\Statistic\UnitPropertyType.cs" />
+    <Compile Include="ViewModels\BattleSection\Statistic\UnitPropertyViewModel.cs" />
+    <Compile Include="ViewModels\BattleSection\Statistic\UnitStatisticViewModel.cs" />
     <Compile Include="Views\BattleSectionView.xaml.cs">
       <DependentUpon>BattleSectionView.xaml</DependentUpon>
     </Compile>
@@ -78,6 +84,12 @@
     </Compile>
     <Compile Include="Views\HeroesBattleTableView.xaml.cs">
       <DependentUpon>HeroesBattleTableView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PropertiesView.xaml.cs">
+      <DependentUpon>PropertiesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UnitStatisticView.xaml.cs">
+      <DependentUpon>UnitStatisticView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -104,6 +116,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\HeroesBattleTableView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PropertiesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UnitStatisticView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -141,5 +161,6 @@
       <Name>MyGameTest.Data</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

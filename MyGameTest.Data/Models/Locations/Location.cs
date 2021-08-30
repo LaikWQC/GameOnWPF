@@ -1,4 +1,5 @@
 ﻿using MyGameTest.Services;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -36,6 +37,7 @@ namespace MyGameTest.Models
                 if (_currentLevel == value) return;
                 _currentLevel = value;
                 if (_currentLevel == null) return;
+                LevelChanged?.Invoke();
                 CreateCalculator();
             }
         }
@@ -53,6 +55,7 @@ namespace MyGameTest.Models
             {
                 _calculator.Calculate();
                 _needRecalculate = false;
+                CalculationChanged?.Invoke();
             }
 
             _heroes.ForEach(x => x.TakeDamage(deltaTime));
@@ -61,5 +64,11 @@ namespace MyGameTest.Models
 
         public IReadOnlyCollection<LocationHeroData> Heroes => _heroes.AsReadOnly();
         public IReadOnlyCollection<EnemyData> Enemies => _currentLevel?.Enemies;
+
+        public HeroBattleStatistic GetStatistic(LocationHeroData hero) => _calculator?.GetStatistic(hero);
+        public EnemyBattleStatistic GetStatistic(EnemyData enemy) => _calculator?.GetStatistic(enemy);
+
+        public event Action LevelChanged;
+        public event Action CalculationChanged;
     }
 }
