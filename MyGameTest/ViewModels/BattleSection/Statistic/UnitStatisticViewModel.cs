@@ -16,6 +16,9 @@ namespace MyGameTest.ViewModels
             _location.CalculationChanged += OnCalculationChanged;
 
             Properties.Add(new UnitPropertyViewModel(UnitPropertyType.HP, "Hit points", _getHP));
+            Properties.Add(new UnitPropertyViewModel(UnitPropertyType.Armor, "Armor", _getArmor));
+            Properties.Add(new UnitPropertyViewModel(UnitPropertyType.Attack, "Attack damage", _getAttack));
+            Properties.Add(new UnitPropertyViewModel(UnitPropertyType.AtkDelay, "Attack delay", _getAtkDelay));
         }
 
         public void Dispose()
@@ -27,7 +30,19 @@ namespace MyGameTest.ViewModels
         protected virtual void OnLocationLevelChanged() { }
         protected virtual void OnCalculationChanged() { }
 
-        protected abstract string _getHP();
+        #region Properties
+        private string _getHP() => $"{HP}";
+        protected abstract int HP { get; }
+
+        private string _getArmor() => $"{Armor}";
+        protected abstract int Armor { get; }
+
+        private string _getAttack() => $"{Attack}";
+        protected abstract int Attack { get; }
+
+        private string _getAtkDelay() => $"{AtkDelay.ToString("0.##")}s";
+        protected abstract double AtkDelay { get; }
+        #endregion
 
         public abstract string Name { get; }
         public List<UnitPropertyViewModel> Properties { get; } = new List<UnitPropertyViewModel>();

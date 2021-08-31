@@ -11,6 +11,8 @@ namespace MyGameTest.ViewModels
 
         public override string Name { get; }
 
-        protected override double GetSingleDps => _entry?.HeroSingleDps ?? 0;
+        protected override double SingleDps => _entry?.HeroSingleDps ?? 0;
+        protected override double MyPreference => _entry?.HeroPreference ?? 0;
+        protected override double TotalDps => _entry?.HeroTotalDps ?? 0;
     }
 }

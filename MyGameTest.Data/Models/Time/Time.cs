@@ -13,7 +13,6 @@ namespace MyGameTest.Models
         private Timer _timer;
         private int _ticksPerSec = 50;
         private double _baseDeltaTime;
-        private int _extraTicks = 0;
         private bool _isUpdating = false;
         private DateTime _lastUpdate;
 
@@ -29,16 +28,9 @@ namespace MyGameTest.Models
 
         private void OnElapsed(object sender, ElapsedEventArgs e)
         {
-            if (_isUpdating)
-            {
-                _extraTicks++;
-                return;
-            }
+            if (_isUpdating) return;
 
             _isUpdating = true;
-            var deltaTime = _baseDeltaTime * (1 + _extraTicks);
-            _extraTicks = 0;
-            //OnUpdate?.Invoke(deltaTime);
 
             OnUpdate?.Invoke((e.SignalTime - _lastUpdate).TotalSeconds);
             _lastUpdate = e.SignalTime;

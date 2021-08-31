@@ -17,7 +17,10 @@ namespace MyGameTest.ViewModels
 
         public override string Name => _hero.Data.Name;
 
-        protected override string _getHP() => $"{_hero.Data.HP}";
+        protected override int HP => _hero.Data.HP;
+        protected override int Armor => _hero.Data.Armor;
+        protected override int Attack => _hero.Data.Damage;
+        protected override double AtkDelay => _hero.Data.AttackDelay;
 
         protected override void OnLocationLevelChanged() => FillEntries();
         protected override void OnCalculationChanged() => RefreshEntries();

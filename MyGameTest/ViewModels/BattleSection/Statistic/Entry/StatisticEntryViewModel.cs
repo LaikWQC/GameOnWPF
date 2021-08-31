@@ -10,7 +10,9 @@ namespace MyGameTest.ViewModels
 
         public StatisticEntryViewModel()
         {
-            Properties.Add(new UnitPropertyViewModel(UnitPropertyType.Damage, "Raw dps from single unit", _getSingleDps));
+            Properties.Add(new UnitPropertyViewModel(UnitPropertyType.Attack, "Raw dps from single unit", _getSingleDps));
+            Properties.Add(new UnitPropertyViewModel(UnitPropertyType.Preference, "How likely you'll attack this target", _getMyPreference));
+            Properties.Add(new UnitPropertyViewModel(UnitPropertyType.TotalAttack, "Total dps from all units", _getTotalDps));
         }
 
         public void UpdateEntry(BattleStatisticEntry entry)
@@ -24,22 +26,16 @@ namespace MyGameTest.ViewModels
         public abstract string Name { get; }
         public List<UnitPropertyViewModel> Properties { get; } = new List<UnitPropertyViewModel>();
 
-        private string _getSingleDps() => GetSingleDps.ToString("0.##");
-        protected abstract double GetSingleDps { get; }
+        #region Properties
+        private string _getSingleDps() => SingleDps.ToString("0.#");
+        protected abstract double SingleDps { get; }
 
-        public double MyPreference
-        {
-            get => _myPreference;
-            set => Set(() => MyPreference, ref _myPreference, value);
-        }
-        private double _myPreference;
+        private string _getMyPreference() => $"{(MyPreference * 100).ToString("0")}%";
+        protected abstract double MyPreference { get; }
 
-        public double TotalDps
-        {
-            get => _totalDps;
-            set => Set(() => TotalDps, ref _totalDps, value);
-        }
-        private double _totalDps;
+        private string _getTotalDps() => TotalDps.ToString("0.#");
+        protected abstract double TotalDps { get; }
+        #endregion
 
         public double IncomingSingleDps
         {

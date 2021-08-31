@@ -3,6 +3,10 @@
     public enum UnitPropertyType
     {
         HP,
-        Damage
+        Armor,
+        Attack,
+        TotalAttack,
+        AtkDelay,
+        Preference
     }
 }

@@ -14,10 +14,10 @@
         </Grid.RowDefinitions>
         <TextBlock Text="{Binding Name}" VerticalAlignment="Center" Grid.Row="0"/>
         <local:PropertiesView DataContext="{Binding Properties}" Grid.Row="1"/>        
-        <ItemsControl ItemsSource="{Binding Entries}" Grid.Row="2">
+        <ItemsControl ItemsSource="{Binding Entries}" Grid.Row="2" Margin="0 15 0 0">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Expander Header="{Binding Name}">
+                    <Expander Header="{Binding Name}" IsExpanded="True">
                         <Expander.Style>
                             <Style TargetType="Expander">
                                 <Style.Triggers>
