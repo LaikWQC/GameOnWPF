@@ -31,10 +31,10 @@ namespace MyGameTest.Models
             var timeLimit = DateTime.UtcNow.AddSeconds(-1);
             lock (_log)
             {
-                var stillRemove = true;
+                var stillRemove = _log.Count > 0;
                 while(stillRemove)
                 {
-                    if(_log.Peek()>timeLimit)
+                    if (_log.Peek() > timeLimit) 
                         stillRemove = false;
                     else
                         _log.Dequeue();

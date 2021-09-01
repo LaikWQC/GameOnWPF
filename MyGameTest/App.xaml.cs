@@ -23,7 +23,7 @@ namespace MyGameTest
             Loader.Load();
 
             timeService.Start();
-            FpsCalculatorViewModel.Initialize(0.25);
+            FpsCalculatorViewModel.Initialize(0.1);
         }
     }
 }
