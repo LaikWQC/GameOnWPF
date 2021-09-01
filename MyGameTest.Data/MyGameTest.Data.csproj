@@ -53,6 +53,7 @@
     <Compile Include="Models\Locations\LocationLevel.cs" />
     <Compile Include="Models\Time\FpsCalculator.cs" />
     <Compile Include="Models\Time\Time.cs" />
+    <Compile Include="Models\Time\Time2.cs" />
     <Compile Include="Models\Time\TimeObject.cs" />
     <Compile Include="Models\UnitData\EnemyData.cs" />
     <Compile Include="Models\UnitData\HeroData.cs" />
