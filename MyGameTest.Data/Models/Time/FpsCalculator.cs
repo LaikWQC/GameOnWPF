@@ -15,7 +15,7 @@ namespace MyGameTest.Models
             Instance = new FpsCalculator(updateFrequency);
         }
 
-        private List<DateTime> _log = new List<DateTime>();
+        private Queue<DateTime> _log = new Queue<DateTime>();
         private Timer _timer;
 
         private FpsCalculator(double updateFrequency) 
@@ -28,17 +28,25 @@ namespace MyGameTest.Models
 
         private void OnElapsed(object sender, ElapsedEventArgs e)
         {
-            var timeNow = DateTime.Now;
+            var timeLimit = DateTime.UtcNow.AddSeconds(-1);
             lock (_log)
-                FPS = _log.Count(x => (timeNow - x).TotalSeconds < 1);
+            {
+                var stillRemove = true;
+                while(stillRemove)
+                {
+                    if(_log.Peek()>timeLimit)
+                        stillRemove = false;
+                    else
+                        _log.Dequeue();
+                }
+                FPS = _log.Count();
+            }                
         }
         protected override void Update(double deltaTime)
         {
             lock (_log)
             {
-                _log.Add(DateTime.Now);
-                if (_log.Count > 100)
-                    _log.RemoveAt(0);
+                _log.Enqueue(DateTime.UtcNow);
             }                
         }
 
