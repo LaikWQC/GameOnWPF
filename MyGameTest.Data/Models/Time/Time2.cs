@@ -38,5 +38,6 @@ namespace MyGameTest.Models
         public event Action<double> OnUpdate;
 
         public void Start() => _timer.Start();
+        public void Pause() => _timer.Stop(); //TODO не думаю что будет корректно работать но и фиг с ним
     }
 }

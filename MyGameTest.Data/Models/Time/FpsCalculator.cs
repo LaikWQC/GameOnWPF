@@ -31,8 +31,8 @@ namespace MyGameTest.Models
             var timeLimit = DateTime.UtcNow.AddSeconds(-1);
             lock (_log)
             {
-                var stillRemove = _log.Count > 0;
-                while(stillRemove)
+                var stillRemove = true;
+                while(stillRemove && _log.Count > 0)
                 {
                     if (_log.Peek() > timeLimit) 
                         stillRemove = false;

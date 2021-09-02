@@ -28,5 +28,6 @@ namespace MyGameTest.Services
     {
         event Action<double> OnUpdate;
         void Start();
+        void Pause();
     }
 }

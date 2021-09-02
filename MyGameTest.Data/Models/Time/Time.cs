@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace MyGameTest.Models
@@ -11,18 +12,18 @@ namespace MyGameTest.Models
     {
         private Task _loopTask;
         private int _fps;
+        private CancellationTokenSource _cts;
 
         public Time(int fps = 60)
         {
             _fps = Math.Min(Math.Max(fps, 1), 500);
         }
 
-        public void Loop()
+        public void Loop(CancellationToken token)
         {
             var lastUpdateTime = DateTime.UtcNow;
             var baseDeltaTime = 1d / _fps;
-            //TODO add cancelation token
-            while (true)
+            while (!token.IsCancellationRequested)
             {
                 var timeNow = DateTime.UtcNow;
                 var deltaTime = (timeNow - lastUpdateTime).TotalSeconds;
@@ -31,7 +32,7 @@ namespace MyGameTest.Models
 
                 var nextUpdateTime = timeNow.AddSeconds(baseDeltaTime).AddMilliseconds(-1);
                 while (DateTime.UtcNow < nextUpdateTime)
-                    System.Threading.Thread.Sleep(1);
+                    Thread.Sleep(1);
             }
         }
 
@@ -39,8 +40,16 @@ namespace MyGameTest.Models
 
         public void Start()
         {
-            _loopTask = new Task(Loop);
+            Pause();
+            _cts = new CancellationTokenSource();
+            _loopTask = new Task(() => Loop(_cts.Token));
             _loopTask.Start();
+        }
+
+        public void Pause()
+        {
+            _cts?.Cancel();
+            _loopTask = null;
         }
     }
 }
